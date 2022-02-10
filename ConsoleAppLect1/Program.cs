@@ -6,37 +6,43 @@ namespace ConsoleAppExe0
     {
         static void Main(string[] args)
         {
-            bool keepGoing = true;
+                bool keepGoing = true;
             do
             {
-                Console.WriteLine("Enter 1 to 3 to select excercise and -1 to quit !!");
-                int assignmentSel = int.Parse(Console.ReadLine() ?? "0");
-                switch (assignmentSel) 
+                try
                 {
+                    Console.WriteLine("Enter 1 to 3 to select excercise and -1 to quit !!");
+                    int assignmentSel = int.Parse(Console.ReadLine() ?? "0");
+                    switch (assignmentSel)
+                    {
                         case 1:
                             string fn = UserInputStr("First Name");
                             string ln = UserInputStr("Last Name");
                             RunExcerciseOne(fn, ln);
-                        break;
+                            break;
                         case 2:
                             Console.WriteLine("Excercise 2");
-                        break;
+                            break;
                         case -1:
                             keepGoing = false;
-                        break;
+                            break;
                         default:
                             Console.WriteLine("Invalid selection !!!");
-                        break;
+                            break;
+                    }
+                    Console.WriteLine("Press any key to continue !");
+                    // key press hiden with (True)
+                    Console.ReadKey();
+                    Console.Clear();
                 }
-                Console.WriteLine("Press any key to continue !");
-                // key press hiden with (True)
-                Console.ReadKey();
-                Console.Clear();
+                catch
+                {
+                    Console.WriteLine("Invalid selection - Non Numberic key detected !!!");
+                }
             } while (keepGoing);
-        
-        
-            Console.WriteLine("Goodbye!!!");
-        }// End of Main
+                
+                Console.WriteLine("Goodbye!!!");
+         }// End of Main
 
         private static void RunExcerciseOne(string fname, string lname)
         {
